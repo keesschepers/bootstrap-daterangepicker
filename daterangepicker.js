@@ -96,6 +96,9 @@
 
         if (hasOptions) {
 
+            if (typeof options.container == 'string')
+                this.container = $(options.container).appendTo('body');
+
             if (typeof options.format == 'string')
                 this.format = options.format;
 
