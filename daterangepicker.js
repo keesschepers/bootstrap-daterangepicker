@@ -367,8 +367,9 @@
 
                 this.changed = true;
 
-                this.container.find('.calendar').hide();
-                this.hide();
+                this.container.find('.ranges li').each(function(){ $(this).removeClass('active'); });
+                $(e.srcElement).addClass('active');
+                this.notify();
             }
         },
 
@@ -448,6 +449,10 @@
             this.leftCalendar.month.set({ month: this.startDate.getMonth(), year: this.startDate.getFullYear() });
             this.rightCalendar.month.set({ month: this.endDate.getMonth(), year: this.endDate.getFullYear() });
             this.updateCalendars();
+            this.notify();
+
+            this.container.find('.ranges li').each(function(){ $(this).removeClass('active'); });
+            this.container.find('.ranges li:first').addClass('active');
         },
 
         clickApply: function (e) {
