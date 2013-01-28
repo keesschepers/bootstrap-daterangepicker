@@ -334,6 +334,8 @@
             this.container.hide();
             $(document).off('mousedown', this.hide);
 
+            $(this.element).trigger('daterangehide', [this, this.changed]);
+
             if (this.changed) {
                 this.changed = false;
                 this.notify();
